@@ -27,7 +27,7 @@ from sklearn.linear_model import LogisticRegression
 
 def load_data(database_filepath):
     engine = create_engine('sqlite:///' + database_filepath)
-    df = pd.read_sql_table('InsertTableName', engine)  
+    df = pd.read_sql_table('disaster_msg_tbl', engine)  
     X = df.message
     Y = df.drop(columns=["id", "message", "original", "genre"])
     category_names = list(df.columns[4:])
@@ -59,8 +59,8 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test, category_names):
     y_pred = model.predict(X_test)
-    accuracy = (y_pred == y_test.values).mean()
-    print(classification_report(y_test.iloc[:, 1:].values, np.array([x[1:] for x in y_pred])))#, target_names = category_names))
+    accuracy = (y_pred == Y_test.values).mean()
+    print(classification_report(Y_test.iloc[:, 1:].values, np.array([x[1:] for x in y_pred])))#, target_names = category_names))
     print('The model accuracy is {:.3f}'.format(accuracy))
 
 

@@ -20,23 +20,19 @@ The last step will be to build a web app in order to classify a new message inpu
 
 # File Description <a name="file_desc"></a>
 
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+var routes = (
+  <Route name="App">
+    <Route name="Admin">
+      <Route name="Users"/>
+      <Route name="Reports"/>
+    </Route>
+    <Route name="Course">
+      <Route name="Assignments"/>
+    </Route>
+  </Route>
+);
 
-- models
-|- train_classifier.py
-|- classifier.pkl  # saved model 
-
-- README.md
 
 
 # Results <a name="result"></a>

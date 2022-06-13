@@ -13,19 +13,31 @@ The code should run with no issues using Python versions 3.*.
 
 # Motivation <a name="motivation"></a>
 
-For this project I was interested in analysing the Airbnb Data of the listings in Seattle; particularly I wanted to answer some questions:
-
-1. What are the busiest times of the year to visit Seattle? By how much do prices spike?
-2. What is the most expensive neighbourhood?
-3. Do hosts with higher rating have higher revenue?
-4. Which facilities of the house contribute more to the price?
-
-I wanted to answer these questions for both academic and curiosity purpose, the informations extracted can give the user an interesting point of view about the city but also about when, where and what list on the platform to maximize the profit.
+During a natural disaster, people send a lot of messages asking for help, food or just to inform about what is happening in a certain moment and location.
+In this project we are going to analyze a dataset from [Figure Height](https://appen.com/), containing messages sent during a natual disaster.
+After a little bit of data exploration, we are going to build a model which aim to classify the message in a category that fit the type of help needed.
+The last step will be to build a web app in order to classify a new message inputted by the user.
 
 # File Description <a name="file_desc"></a>
 
-The questions are answered in one Jupyter Notebook where you can see the full analysis, in the repository there are also the CSV files used for the investigation.
-However the source files are available on [Kaggle](https://www.kaggle.com/datasets/airbnb/seattle).
+- app
+| - template
+| |- master.html  # main page of web app
+| |- go.html  # classification result page of web app
+|- run.py  # Flask file that runs app
+
+- data
+|- disaster_categories.csv  # data to process 
+|- disaster_messages.csv  # data to process
+|- process_data.py
+|- InsertDatabaseName.db   # database to save clean data to
+
+- models
+|- train_classifier.py
+|- classifier.pkl  # saved model 
+
+- README.md
+
 
 # Results <a name="result"></a>
 The main findings with the answers of the questions can be found [here](https://medium.com/@thomasredz/so-you-wanna-list-a-property-on-the-airbnb-market-maybe-this-can-help-ffcbda1b4da0).

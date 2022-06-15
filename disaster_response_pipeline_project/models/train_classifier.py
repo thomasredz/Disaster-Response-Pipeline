@@ -35,6 +35,13 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """
+    Given a text, return the tokenized version of it.
+    Args:
+        -text (str) : Text that need to be tokenized
+    Returns:
+        -clean_tokens(list): List of the tokens coming from the tokenization process
+    """
     # Normalize
     text = text.lower().strip()
     text = re.sub(r"[^a-z0-9]", " ", text)
@@ -49,6 +56,12 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    Build the model which will be used for the prediction.
+    Args:
+    Returns:
+        -pipeline (model): Model which need to be trained
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -58,6 +71,15 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Evaluate the model and return the accuracy
+    Args:
+        -model (model) : Model which needs to be evaluated
+        -X_test (list): Data that needs to be tested
+        -Y_test (list): Ground truth of the test data
+        -category_names (list): Name of all the categories in the df
+    Returns:
+    """
     y_pred = model.predict(X_test)
     accuracy = (y_pred == Y_test.values).mean()
     print(classification_report(Y_test.iloc[:, 1:].values, np.array([x[1:] for x in y_pred])))#, target_names = category_names))
@@ -65,11 +87,20 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    """
+    Save the model in the provided filepath
+        -model (model) : Model which needs to be saved
+        -model_filepath (str): Path where to save the model
+    Returns:
+    """
     with open (model_filepath, 'wb') as f:
         pickle.dump(model, f)  
 
 
 def main():
+    """
+    Main fuction
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))

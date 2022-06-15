@@ -5,6 +5,14 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Load the two datasets and merge them
+    Args:
+        -messages_filepath (csv) : Message Dataset path
+        -categories_filepath (csv) : Categories Dataset path
+    Returns:
+        -df (DataFrame): Dataframe containing the merge of the message and categories csvs
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = messages.merge(categories, on='id')
@@ -12,6 +20,14 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    """
+    Clean the dataframe returning in output the message and the one-hot encoding of the corrisponding values
+    Args:
+        -df (DataFrame): Dataframe containing the merge of the message and categories csvs
+    Returns:
+        -df (DataFrame): Dataframe containing the message and the one-hot encoding of the values
+       
+    """
     categories = df["categories"].str.split(";", expand = True)
     # select the first row of the categories dataframe
     row = categories[:1]
@@ -36,11 +52,20 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """
+    Save the dataframe in the provided filepath in a DB format
+        -df (dataframe) : DF which needs to be saved
+        -database_filename (str): Path where to save the df
+    Returns:
+    """
     engine = create_engine('sqlite:///' + database_filename)
     df.to_sql('disaster_msg_tbl', engine, index=False)  
 
 
 def main():
+    """
+    Main function
+    """
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]

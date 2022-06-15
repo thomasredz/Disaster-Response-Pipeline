@@ -3,8 +3,9 @@
 1. [ Installation ](#installation)
 2. [ Motivation ](#motivation)
 3. [ File description ](#file_desc)
-4. [ Results ](#result)
-5. [ License ](#license)
+4. [ How to launch the app? ](#launch_app)
+5. [ Results ](#result)
+6. [ License ](#license)
 
 # Installation <a name="installation"></a>
 
@@ -44,7 +45,7 @@ The last step will be to build a web app in order to classify a new message inpu
 
 ```
 
-# How to launch the app?:
+# How to launch the app? <a name="launch_app"></a>
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database

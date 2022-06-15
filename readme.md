@@ -27,23 +27,35 @@ The last step will be to build a web app in order to classify a new message inpu
 .
 ├── disaster_response_pipeline_project
 │   ├── app
-    |   ├── templates
-    │   │   │   ├── go.html
-    │   │   │   └── master.html
-    │   │   ├── run.py
+│    |   ├── templates
+│    │   │   │   ├── go.html
+│    │   │   │   └── master.html
+│    │   │   ├── run.py
 │   ├── models
 │   │   ├── train_classifier.py
 │   └── readme.md
 ├── data
 │       ├── DisasterResponse.db
 │       └── disaster_categories.csv
-│        └── process_data.py
+│       └── process_data.py
 ├── ETL Pipeline Preparation.ipynb
 ├── ML Pipeline Preparation.ipynb
 └── readme.md
 
 ```
 
+# How to launch the app?:
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python disaster_response_pipeline_project/models/train_classifier.py data/DisasterResponse.db disaster_response_pipeline_project/models/classifier.pkl`
+
+2. Run the following command in the project's root directory to run your web app.
+    `python disaster_response_pipeline_project/app/run.py`
+
+3. Go to http://0.0.0.0:3001/
 
 
 # Results <a name="result"></a>

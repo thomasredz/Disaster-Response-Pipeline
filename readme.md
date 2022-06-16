@@ -61,6 +61,7 @@ The last step will be to build a web app in order to classify a new message inpu
 
 # Results <a name="result"></a>
 The trained model has an accuracy of 94%, and we were successufully able to launch the app and analyze new messages.
+
 Here is visible a screenshot of the app:
 ![Disaster Response App](https://github.com/thomasredz/Disaster-Response-Pipeline/blob/master/screenshot.png)
 

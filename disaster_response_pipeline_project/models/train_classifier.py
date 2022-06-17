@@ -26,6 +26,15 @@ from sklearn.linear_model import LogisticRegression
 
 
 def load_data(database_filepath):
+    """
+    Load the database from the provided filepath
+    Args:
+        -database_filepath (str) : The path where to find the database
+    Returns:
+        -X (list) : List of all the messages
+        -Y (list): List of the values in the corresponding categories
+        -category_names (list): List of all the category names
+    """
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table('disaster_msg_tbl', engine)  
     X = df.message
